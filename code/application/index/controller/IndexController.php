@@ -23,11 +23,16 @@ class IndexController extends Controller
         return json($mod->admin_powers(Session::get('uname')));
     }
 
-     //首页（一进来就显示）
-     public function show()
-     {
+    //首页（一进来就显示）
+    public function show()
+    {
         return $this->fetch('admin/index');
-     }
+    }
 
-
+    //用户信息
+    public function user_info()
+    {
+        $mod = new IndexModel();
+        return json($mod->user_info());
+    }
 }

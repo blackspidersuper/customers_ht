@@ -43,8 +43,8 @@
     <div class="layui-fluid">
 
         <div class="x-nav">
-            <a><cite style="font-size: 15px;font-weight: bold;">当前可用数量<span id="pieces"></span>条
-                </cite></a>
+            <!-- <a><cite style="font-size: 15px;font-weight: bold;">当前可用数量<span id="pieces"></span>条
+                </cite></a> -->
             <span lay-separator="">&ensp;&ensp;&ensp;&ensp;</span>
             <a><cite style="font-size: 15px;font-weight: bold;">信息流表单意向低于百40或新账户仍在学习阶段，不建议使用，需要优化账号人群画像
                 </cite></a>
@@ -52,6 +52,66 @@
         </div>
 
         <div class="layui-collapse" lay-filter="test">
+
+
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">巨量-抖音-监测链接&ensp;&ensp;&ensp;&ensp;
+                </h2>
+                <div class="layui-colla-content layui-show">
+                    <!--  -->
+                    <blockquote class="layui-elem-quote" style="padding: 5px;background: #fff;">
+
+                        <table style="width: 100%;">
+                            <tr>
+                                <th>
+                                    <label class="layui-form-label" style="width: 990px;text-align: left;">
+                                        <a target="_blank"
+                                            href=""
+                                            style="color: #065cff;text-align: left;font-size: 14px;font-weight: bold;">巨量-抖音-代码安装(说明)</a>
+                                        &ensp;&ensp;&ensp;&ensp;
+
+                                        <br>
+                                        <dev style="color: #fd0000;font-size: 14px;font-weight: bold;">下方为-监测链接</dev>
+                                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                                        <dev>（备注-巨量-抖音）可以根据自己需要更换（备注1--备注2）</dev>
+                                    </label>
+
+                                    <textarea id="douyin_table1" placeholder="巨量-有效触点-监测链接" class="layui-textarea"
+                                         style="overflow-y:visible;min-height: 65px;" disabled>
+                                    </textarea>
+
+                                    <label class="layui-form-label" style="width: 800px;text-align: left;">
+                                        <dev style="color: #fd0000;font-size: 14px;font-weight: bold;">下方为-视频播放-监测链接</dev>
+                                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                                        <dev>（备注-xxxx）可以根据自己需要更换（备注1--备注2）</dev>
+                                    </label>
+                                    <textarea id="douyin_table2" placeholder="巨量-视频播放-监测链接" class="layui-textarea"
+                                        style="overflow-y:visible;min-height: 65px;" disabled>
+                                    </textarea>
+                                
+                                    <label class="layui-form-label" style="width: 800px;text-align: left;">
+                                        <dev style="color: #fd0000;font-size: 14px;font-weight: bold;">下方为-视频播完-监测链接</dev>
+                                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                                        <dev>（备注-xxxx）可以根据自己需要更换（备注1--备注2）</dev>
+                                    </label>
+                                    <textarea id="douyin_table3" placeholder="巨量-视频播完-监测链接" class="layui-textarea"
+                                        style="overflow-y:visible;min-height: 65px;" disabled>
+                                    </textarea>
+                                
+                                    <label class="layui-form-label" style="width: 800px;text-align: left;">
+                                        <dev style="color: #fd0000;font-size: 14px;font-weight: bold;">下方为-视频有效播放-监测链接</dev>
+                                        &ensp;&ensp;&ensp;&ensp;
+                                        <dev>（备注-xxxx）可以根据自己需要更换（备注1--备注2）</dev>
+                                    </label>
+                                    <textarea id="douyin_table4" placeholder="巨量-视频有效播放-监测链接" class="layui-textarea"
+                                        style="overflow-y:visible;min-height: 65px;" disabled>
+                                    </textarea>
+                                </th>
+                            </tr>
+                        </table>
+                    </blockquote>
+                </div>
+            </div>
             
             <div class="layui-colla-item">
                 <h2 class="layui-colla-title">百度-大搜基木鱼-监测链接&ensp;&ensp;&ensp;&ensp;
@@ -76,7 +136,7 @@
                                         <dev>（备注-大搜基木鱼）可以根据自己需要更换（备注1--备注2）</dev>
                                     </label>
 
-                                    <textarea id="baidu_monitor_check" placeholder="大搜基木鱼-挂载链接" class="layui-textarea"
+                                    <textarea id="baidu_table_check" placeholder="大搜基木鱼-挂载链接" class="layui-textarea"
                                         style="overflow-y:visible;min-height: 60px;" disabled>
 
                                     </textarea>
@@ -111,7 +171,7 @@
                                         <dev>（备注-百度信息流）可以根据自己需要更换（备注1--备注2）</dev>
                                     </label>
 
-                                    <textarea id="baidu_monitor_info" placeholder="百度信息流-挂载链接" class="layui-textarea"
+                                    <textarea id="baidu_table_info" placeholder="百度信息流-挂载链接" class="layui-textarea"
                                         style="overflow-y:visible;min-height: 60px;" disabled>
                                     </textarea>
                                 </th>
@@ -144,7 +204,7 @@
                                         <dev>（备注-快手）可以根据自己需要更换（备注1--备注2）</dev>
                                     </label>
 
-                                    <textarea id="ks_monitor" placeholder="快手-挂载链接" class="layui-textarea"
+                                    <textarea id="ks_table" placeholder="快手-挂载链接" class="layui-textarea"
                                         style="overflow-y:visible;min-height: 60px;" disabled>
                                     </textarea>
                                 </th>
@@ -374,42 +434,48 @@
             //layer.msg('展开状态：'+ data.show);
         });
 
-        // $.get("/user_info", function (res) {
-        //     var res = JSON.parse(res);
+        $.get("/user_info", function (res) {
 
-        //     console.log(res);
+            //抖音-有效触点
+            $("#douyin_table1").val("https://" + res.domain_name + "/douyin_table_all?id=" + res.uid_sign + "&name=抖音-有效触点&I=__IMEI__&OS=__OS__&MODEL=__MODEL__&IP=__IP__&AID=__AID__&CAMPAIGN_NAME=__CAMPAIGN_NAME__&AID_NAME=__AID_NAME__&CID_NAME=__CID_NAME__&idfa=__IDFA__&androidid=__ANDROIDID__&oaid=__OAID__&oaid_md5=__OAID_MD5__&ts=__TS__&callback=__CALLBACK_URL__&csite=__CSITE__&promotionid=__PROMOTION_ID__&caid=__CAID__&bh=1");
+            //抖音-视频播放
+            $("#douyin_table2").val("https://" + res.domain_name + "/douyin_table_all?id=" + res.uid_sign + "&name=抖音-视频播放&I=__IMEI__&OS=__OS__&MODEL=__MODEL__&IP=__IP__&AID=__AID__&CAMPAIGN_NAME=__CAMPAIGN_NAME__&AID_NAME=__AID_NAME__&CID_NAME=__CID_NAME__&idfa=__IDFA__&androidid=__ANDROIDID__&oaid=__OAID__&oaid_md5=__OAID_MD5__&ts=__TS__&callback=__CALLBACK_URL__&csite=__CSITE__&promotionid=__PROMOTION_ID__&caid=__CAID__&bh=2");
+            //抖音-视频播完
+            $("#douyin_table3").val("https://" + res.domain_name + "/douyin_table_all?id=" + res.uid_sign + "&name=抖音-视频播完&I=__IMEI__&OS=__OS__&MODEL=__MODEL__&IP=__IP__&AID=__AID__&CAMPAIGN_NAME=__CAMPAIGN_NAME__&AID_NAME=__AID_NAME__&CID_NAME=__CID_NAME__&idfa=__IDFA__&androidid=__ANDROIDID__&oaid=__OAID__&oaid_md5=__OAID_MD5__&ts=__TS__&callback=__CALLBACK_URL__&csite=__CSITE__&promotionid=__PROMOTION_ID__&caid=__CAID__&bh=3");
+            //抖音-视频有效播放
+            $("#douyin_table4").val("https://" + res.domain_name + "/douyin_table_all?id=" + res.uid_sign + "&name=抖音-视频有效播放&I=__IMEI__&OS=__OS__&MODEL=__MODEL__&IP=__IP__&AID=__AID__&CAMPAIGN_NAME=__CAMPAIGN_NAME__&AID_NAME=__AID_NAME__&CID_NAME=__CID_NAME__&idfa=__IDFA__&androidid=__ANDROIDID__&oaid=__OAID__&oaid_md5=__OAID_MD5__&ts=__TS__&callback=__CALLBACK_URL__&csite=__CSITE__&promotionid=__PROMOTION_ID__&caid=__CAID__&bh=4");
+            
+            // 百度-大搜基木鱼
+            $("#baidu_table_check").val("https://" + res.domain_name + "/baidu_table_check?id=" + res.uid_sign + "&name=%E7%99%BE%E5%BA%A6-%E5%A4%A7%E6%90%9C%E5%9F%BA%E6%9C%A8%E9%B1%BC&userid=__USER_ID__&aid=__IDEA_ID__&pid=__PLAN_ID__&uid=__UNIT_ID__&wordid=__WORDID__&productid=__PRODUCT_ID__&click_id=__CLICK_ID__&idfa=__IDFA__&imei_md5=__IMEI__&oaid=__OAID__&oaid_md5=__OAID_MD5__&android_id_md5=__ANDROID_ID__&os=__OS__&ip=__IP__&caid=__CAID__&ext_info={{EXT_INFO}}&callType=v2");
 
-        //     // 百度-大搜基木鱼
-        //     $("#baidu_monitor_check").val("https://" + res.domain_name + "/baidu_monitor_check?id=" + res.uid_sign + "&name=%E7%99%BE%E5%BA%A6-%E5%A4%A7%E6%90%9C%E5%9F%BA%E6%9C%A8%E9%B1%BC&userid=__USER_ID__&aid=__IDEA_ID__&pid=__PLAN_ID__&uid=__UNIT_ID__&wordid=__WORDID__&productid=__PRODUCT_ID__&click_id=__CLICK_ID__&idfa=__IDFA__&imei_md5=__IMEI__&oaid=__OAID__&oaid_md5=__OAID_MD5__&android_id_md5=__ANDROID_ID__&os=__OS__&ip=__IP__&caid=__CAID__&ext_info={{EXT_INFO}}&callType=v2");
+            // 百度-信息流
+            $("#baidu_table_info").val("https://" + res.domain_name + "/baidu_table_info?id=" + res.uid_sign + "&name=%E7%99%BE%E5%BA%A6-%E4%BF%A1%E6%81%AF%E6%B5%81&idfa={{IDFA}}&I={{IMEI_MD5}}&OS={{OS}}&ip={{IP}}&ts={{TS}}&aid={{IDEA_ID}}&oaid={{OAID}}&ANDROID_ID={{ANDROID_ID}}&uid={{UNIT_ID}}&wordid={{WORDID}}&productid={{PRODUCT_ID}}&click_id={{CLICK_ID}}&caid={{CAID}}&ext_info={{EXT_INFO}}&callType=v2");
 
-        //     // 百度-信息流
-        //     $("#baidu_monitor_info").val("https://" + res.domain_name + "/baidu_monitor_info?id=" + res.uid_sign + "&name=%E7%99%BE%E5%BA%A6-%E4%BF%A1%E6%81%AF%E6%B5%81&idfa={{IDFA}}&I={{IMEI_MD5}}&OS={{OS}}&ip={{IP}}&ts={{TS}}&aid={{IDEA_ID}}&oaid={{OAID}}&ANDROID_ID={{ANDROID_ID}}&uid={{UNIT_ID}}&wordid={{WORDID}}&productid={{PRODUCT_ID}}&click_id={{CLICK_ID}}&caid={{CAID}}&ext_info={{EXT_INFO}}&callType=v2");
+            // 快手
+            $("#ks_table").val("https://" + res.domain_name + "/kuaishou_table_all?id=" + res.uid_sign + "&name=%E5%BF%AB%E6%89%8B&accountid=__ACCOUNTID__&aid=__AID__&cid=__CID__&oaidMD5=__OAID2__&imeiMD5=__IMEI2__&callback=__CALLBACK__&did=__DID__&dname=__DNAME__&unitname=__UNITNAME__&photoid=__PHOTOID__&imei3=__IMEI3__&imei4=__IMEI4__&idfa2=__IDFA2__&idfa3=__IDFA3__&kenyid_caa=__KENYID_CAA__&mac2=__MAC2__&mac3=__MAC3__&androidid2=__ANDROIDID2__&androidid3=__ANDROIDID3__&ts=__TS__&ua=__UA__&os=__OS__&model=__MODEL__&ip=__IP__&ipv4=__IPV4__&ipv6=__IPV6__&csite=__CSITE__&ac_creative=__AC_CREATIVE__&winfoid=__WINFOID__&llsid=__LLSID__");
 
-        //     // 快手
-        //     $("#ks_monitor").val("https://" + res.domain_name + "/kuaishou_monitor_all?id=" + res.uid_sign + "&name=%E5%BF%AB%E6%89%8B&accountid=__ACCOUNTID__&aid=__AID__&cid=__CID__&oaidMD5=__OAID2__&imeiMD5=__IMEI2__&callback=__CALLBACK__&did=__DID__&dname=__DNAME__&unitname=__UNITNAME__&photoid=__PHOTOID__&imei3=__IMEI3__&imei4=__IMEI4__&idfa2=__IDFA2__&idfa3=__IDFA3__&kenyid_caa=__KENYID_CAA__&mac2=__MAC2__&mac3=__MAC3__&androidid2=__ANDROIDID2__&androidid3=__ANDROIDID3__&ts=__TS__&ua=__UA__&os=__OS__&model=__MODEL__&ip=__IP__&ipv4=__IPV4__&ipv6=__IPV6__&csite=__CSITE__&ac_creative=__AC_CREATIVE__&winfoid=__WINFOID__&llsid=__LLSID__");
+            //广点通-点击
+            $("#gdt_click").val("https://" + res.domain_name + "/gdt_click_table_all?id=" + res.uid_sign + "&name=广点通-点击&click_id=__CLICK_ID__&click_time=__CLICK_TIME__&impression_time=__IMPRESSION_TIME__&campaign_id=__CAMPAIGN_ID__&adgroup_id=__ADGROUP_ID__&ad_id=__AD_ID__&ad_platform_type=__AD_PLATFORM_TYPE__&ad_type=__AD_TYPE__&account_id=__ACCOUNT_ID__&agency_id=__AGENCY_ID__&click_sku_id=__CLICK_SKU_ID__&billing_event=__BILLING_EVENT__&deeplink_url=__DEEPLINK_URL__&universal_link=__UNIVERSAL_LINK__&page_url=__PAGE_URL__&device_os_type=__DEVICE_OS_TYPE__&process_time=__PROCESS_TIME__&promoted_object_id=__PROMOTED_OBJECT_ID__&promoted_object_type=__PROMOTED_OBJECT_TYPE__&request_id=__REQUEST_ID__&impression_id=__IMPRESSION_ID__&site_set=__SITE_SET__&muid=__MUID__&hash_android_id=__HASH_ANDROID_ID__&ip=__IP__&user_agent=__USER_AGENT__&callback=__CALLBACK__&encrypted_position_id=__ENCRYPTED_POSITION_ID__&ipv6=__IPV6__&hash_oaid=__HASH_OAID__&qaid_caa=__QAID_CAA__&adgroup_name=__ADGROUP_NAME__&site_set_name=__SITE_SET_NAME__&campaign_name=__CAMPAIGN_NAME__&ad_name=__AD_NAME__&model=__MODEL__&boost_exp_info=__BOOST_EXP_INFO__&boost_model_id=__BOOST_MODEL_ID__&wechat_openid=__WECHAT_OPEN_ID__&keyword_id=__KEYWORD_ID__&keyword_text=__KEYWORD_TEXT__&ip_md5=__IP_MD5__&ipv6_md5=__IPV6_MD5__&caid=__CAID__");
 
-        //     //广点通-点击
-        //     $("#gdt_click").val("https://" + res.domain_name + "/gdt_click_monitor_all?id=" + res.uid_sign + "&name=广点通-点击&click_id=__CLICK_ID__&click_time=__CLICK_TIME__&impression_time=__IMPRESSION_TIME__&campaign_id=__CAMPAIGN_ID__&adgroup_id=__ADGROUP_ID__&ad_id=__AD_ID__&ad_platform_type=__AD_PLATFORM_TYPE__&ad_type=__AD_TYPE__&account_id=__ACCOUNT_ID__&agency_id=__AGENCY_ID__&click_sku_id=__CLICK_SKU_ID__&billing_event=__BILLING_EVENT__&deeplink_url=__DEEPLINK_URL__&universal_link=__UNIVERSAL_LINK__&page_url=__PAGE_URL__&device_os_type=__DEVICE_OS_TYPE__&process_time=__PROCESS_TIME__&promoted_object_id=__PROMOTED_OBJECT_ID__&promoted_object_type=__PROMOTED_OBJECT_TYPE__&request_id=__REQUEST_ID__&impression_id=__IMPRESSION_ID__&site_set=__SITE_SET__&muid=__MUID__&hash_android_id=__HASH_ANDROID_ID__&ip=__IP__&user_agent=__USER_AGENT__&callback=__CALLBACK__&encrypted_position_id=__ENCRYPTED_POSITION_ID__&ipv6=__IPV6__&hash_oaid=__HASH_OAID__&qaid_caa=__QAID_CAA__&adgroup_name=__ADGROUP_NAME__&site_set_name=__SITE_SET_NAME__&campaign_name=__CAMPAIGN_NAME__&ad_name=__AD_NAME__&model=__MODEL__&boost_exp_info=__BOOST_EXP_INFO__&boost_model_id=__BOOST_MODEL_ID__&wechat_openid=__WECHAT_OPEN_ID__&keyword_id=__KEYWORD_ID__&keyword_text=__KEYWORD_TEXT__&ip_md5=__IP_MD5__&ipv6_md5=__IPV6_MD5__&caid=__CAID__");
+            //广点通-点击freeback
+            $("#gdt_click_freeback").val("https://" + res.domain_name + "/gdt_click_table_all?id=" + res.uid_sign + "&name=广点通-点击freeback");
 
-        //     //广点通-点击freeback
-        //     $("#gdt_click_freeback").val("https://" + res.domain_name + "/gdt_click_monitor_all?id=" + res.uid_sign + "&name=广点通-点击freeback");
+            //广点通-曝光监测
+            $("#gdt_export").val("https://" + res.domain_name + "/gdt_exposure_table_all?id=" + res.uid_sign + "&name=广点通-曝光监测&impression_id=__IMPRESSION_ID__&impression_time=__IMPRESSION_TIME__&campaign_id=__CAMPAIGN_ID__&adgroup_id=__ADGROUP_ID__&ad_id=__AD_ID__&ad_platform_type=__AD_PLATFORM_TYPE__&ad_type=__AD_TYPE__&account_id=__ACCOUNT_ID__&agency_id=__AGENCY_ID__&impression_sku_id=__IMPRESSION_SKU_ID__&billing_event=__BILLING_EVENT__&deeplink_url=__DEEPLINK_URL__&universal_link=__UNIVERSAL_LINK__&page_url=__PAGE_URL__&device_os_type=__DEVICE_OS_TYPE__&process_time=__PROCESS_TIME__&promoted_object_id=__PROMOTED_OBJECT_ID__&promoted_object_type=__PROMOTED_OBJECT_TYPE__&request_id=__REQUEST_ID__&site_set=__SITE_SET__&muid=__MUID__&hash_android_id=__HASH_ANDROID_ID__&ip=__IP__&user_agent=__USER_AGENT__&callback=__CALLBACK__&encrypted_position_id=__ENCRYPTED_POSITION_ID__&ipv6=__IPV6__&hash_oaid=__HASH_OAID__&qaid_caa=__QAID_CAA__&adgroup_name=__ADGROUP_NAME__&site_set_name=__SITE_SET_NAME__&ad_name=__AD_NAME__&model=__MODEL__&boost_exp_info=__BOOST_EXP_INFO__&boost_model_id=__BOOST_MODEL_ID__&wechat_openid=__WECHAT_OPEN_ID__&keyword_id=__KEYWORD_ID__&keyword_text=__KEYWORD_TEXT__&ip_md5=__IP_MD5__&ipv6_md5=__IPV6_MD5__&caid=__CAID__");
 
-        //     //广点通-曝光监测
-        //     $("#gdt_export").val("https://" + res.domain_name + "/gdt_exposure_monitor_all?id=" + res.uid_sign + "&name=广点通-曝光监测&impression_id=__IMPRESSION_ID__&impression_time=__IMPRESSION_TIME__&campaign_id=__CAMPAIGN_ID__&adgroup_id=__ADGROUP_ID__&ad_id=__AD_ID__&ad_platform_type=__AD_PLATFORM_TYPE__&ad_type=__AD_TYPE__&account_id=__ACCOUNT_ID__&agency_id=__AGENCY_ID__&impression_sku_id=__IMPRESSION_SKU_ID__&billing_event=__BILLING_EVENT__&deeplink_url=__DEEPLINK_URL__&universal_link=__UNIVERSAL_LINK__&page_url=__PAGE_URL__&device_os_type=__DEVICE_OS_TYPE__&process_time=__PROCESS_TIME__&promoted_object_id=__PROMOTED_OBJECT_ID__&promoted_object_type=__PROMOTED_OBJECT_TYPE__&request_id=__REQUEST_ID__&site_set=__SITE_SET__&muid=__MUID__&hash_android_id=__HASH_ANDROID_ID__&ip=__IP__&user_agent=__USER_AGENT__&callback=__CALLBACK__&encrypted_position_id=__ENCRYPTED_POSITION_ID__&ipv6=__IPV6__&hash_oaid=__HASH_OAID__&qaid_caa=__QAID_CAA__&adgroup_name=__ADGROUP_NAME__&site_set_name=__SITE_SET_NAME__&ad_name=__AD_NAME__&model=__MODEL__&boost_exp_info=__BOOST_EXP_INFO__&boost_model_id=__BOOST_MODEL_ID__&wechat_openid=__WECHAT_OPEN_ID__&keyword_id=__KEYWORD_ID__&keyword_text=__KEYWORD_TEXT__&ip_md5=__IP_MD5__&ipv6_md5=__IPV6_MD5__&caid=__CAID__");
+            //广点通-效果监测
+            $("#gdt_effect").val("https://" + res.domain_name + "/gdt_effect_table_all?id=" + res.uid_sign + "&name=广点通-效果监测");
 
-        //     //广点通-效果监测
-        //     $("#gdt_effect").val("https://" + res.domain_name + "/gdt_effect_monitor_all?id=" + res.uid_sign + "&name=广点通-效果监测");
+            //广点通-企业微信加粉效果转发监测
+            $("#gdt_fans").val("https://" + res.domain_name + "/gdt_fans_table_all?id=" + res.uid_sign + "&name=广点通-企业微信加粉效果转发监测");
 
-        //     //广点通-企业微信加粉效果转发监测
-        //     $("#gdt_fans").val("https://" + res.domain_name + "/gdt_fans_monitor_all?id=" + res.uid_sign + "&name=广点通-企业微信加粉效果转发监测");
+            //广点通-广点通，公众号关注效果转发监测
+            $("#gdt_follow").val("https://" + res.domain_name + "/gdt_follow_table_all?id=" + res.uid_sign + "&name=广点通-公众号关注效果转发监测");
 
-        //     //广点通-广点通，公众号关注效果转发监测
-        //     $("#gdt_follow").val("https://" + res.domain_name + "/gdt_follow_monitor_all?id=" + res.uid_sign + "&name=广点通-公众号关注效果转发监测");
+            //剩余可用条数
+            $("#pieces").html(res.pieces)
 
-        //     //剩余可用条数
-        //     $("#pieces").html(res.pieces)
-
-        // });
+        });
 
 
     });

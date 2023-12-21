@@ -8,7 +8,7 @@ class Check
 {
     public function handle($request, \Closure $next)
     {
-        $uid = Session::get('id');
+        $uid = Session::get('uid_sign');
 
         if (empty($uid) && $_SERVER['REQUEST_URI'] != '/login' && $_SERVER['REQUEST_URI'] != '/tologin') {
             return redirect('/login');

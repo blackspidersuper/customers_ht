@@ -20,7 +20,7 @@ class AdminModel extends Model
     public function user_check($postdata)
     {
         $uname = $postdata['uname'];
-        $sql = "SELECT `id`,`uname`,`name`,`passwd`,`created` FROM `user` WHERE `uname`='" . $uname . "'";
+        $sql = "SELECT `id`,`uname`,`name`,`passwd`,`uid_sign`,`created` FROM `user` WHERE `uname`='" . $uname . "'";
         $userinfo = Db::query($sql);
 
         $run = array('code' => '0', 'msg' => '账号或者密码不正确');
@@ -36,6 +36,7 @@ class AdminModel extends Model
             Session::set('uname', $userinfo[0]['uname']);
             Session::set('name', $userinfo[0]['name']);
             Session::set('id', $userinfo[0]['id']);
+            Session::set('uid_sign', $userinfo[0]['uid_sign']);
             return array('code' => '1', 'msg' => '校验成功');
         } else {
             return $run;

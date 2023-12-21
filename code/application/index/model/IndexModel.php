@@ -21,7 +21,7 @@ class IndexModel extends Model
         $push_data = $this->push_data;
 
         //查询用户存不存在
-        $sql = "SELECT `uname` FROM `user` WHERE `id` = '".$id."'";
+        $sql = "SELECT `uname` FROM `user` WHERE `id` = '" . $id . "'";
         $res = Db::query($sql);
 
         if (empty($res)) {
@@ -30,6 +30,26 @@ class IndexModel extends Model
 
         return $push_data;
     }
+
+
+    //用户信息
+    public function user_info()
+    {
+        $id = Session::get('id');
+
+        $sql = "SELECT `id` FROM `user` WHERE `id` = '{$id}'";
+        $res = Db::query($sql);
+
+        if (empty($res)) {
+            return array();
+        }
+
+        $domain_name = $_SERVER['HTTP_HOST']; //当前域名
+
+        return array('username' => Session::get('uname'), 'uid_sign' => Session::get('uid_sign'),'domain_name'=>$domain_name);
+    }
+
+
 
     //传给前端的
     public $push_data = array(
