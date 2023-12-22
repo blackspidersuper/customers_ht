@@ -17,9 +17,9 @@ return [
     // 数据库名
     'database'        => 'customers_ht',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'customers_ht',
     // 密码
-    'password'        => '15acc4fb061e8bf4',
+    'password'        => '',
     // 端口
     'hostport'        => '3306',
     // 连接dsn

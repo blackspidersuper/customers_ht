@@ -9,7 +9,6 @@ use think\Db;
 class AdminModel extends Model
 {
     protected $paskey1 = 'm4jWe2dazUAtV2GIeN1pDaWMSJlJbbBD';
-    protected $paskey2 = 'T6ehWWGeJpnkoZoyVUC9TYD1vhOhW26R';
 
     /**
      * 校验登录信息
@@ -23,6 +22,8 @@ class AdminModel extends Model
         $sql = "SELECT `id`,`uname`,`name`,`passwd`,`uid_sign`,`created` FROM `user` WHERE `uname`='" . $uname . "'";
         $userinfo = Db::query($sql);
 
+        $password_key2 = Db::getConfig('password');
+
         $run = array('code' => '0', 'msg' => '账号或者密码不正确');
 
         //账号是否存在（混淆一波视听，免得暴库）
@@ -31,7 +32,7 @@ class AdminModel extends Model
         }
 
         //密码不能直接放数据库
-        $psw = md5($this->paskey1.$userinfo[0]['created'] . $postdata['passwd'] . $this->paskey2 );
+        $psw = md5($this->paskey1.$userinfo[0]['created'] . $postdata['passwd'] . $password_key2 );
         if ($userinfo[0]['passwd'] == $psw) {
             Session::set('uname', $userinfo[0]['uname']);
             Session::set('name', $userinfo[0]['name']);

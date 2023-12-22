@@ -6,18 +6,22 @@ $param = $_SERVER['argv'];
 $servername = $_SERVER['argv'][1];  // 数据库服务器名称  
 $username = $_SERVER['argv'][2];    // 数据库用户名  
 $password = $_SERVER['argv'][3];    // 数据库密码  
-$dbname = $_SERVER['argv'][4];      // 数据库名称  
+$dbname = $_SERVER['argv'][4];      // 数据库名称
+
+$account_uname =  $_SERVER['argv'][5]; //账号
+$account_pwd =  $_SERVER['argv'][6]; //密码
+$account_name =  $_SERVER['argv'][7]; //用户名
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // 检查连接是否成功  
 if ($conn->connect_error) {
 
-    if (strpos($conn->connect_error, 'Unknown database') !== false) {
-        die($_SERVER['argv'][4] . " 数据库不存在，请新建数据库\n");
-    }
+  if (strpos($conn->connect_error, 'Unknown database') !== false) {
+    die($_SERVER['argv'][4] . " 数据库不存在，请新建数据库\n");
+  }
 
-    die("连接失败: " . $conn->connect_error);
+  die("连接失败: " . $conn->connect_error);
 }
 
 // 检查是否存在数据库  
@@ -31,7 +35,7 @@ $user_bind_sql = "CREATE TABLE `user` (
     `uid_sign` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '唯一标识',
     `passwd` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '密码',
     `created` int(11) NOT NULL COMMENT '创建时间',
-    PRIMARY KEY (`id`) USING BTREE
+    PRIMARY KEY (`id`) USING BTREE,
     UNIQUE KEY `uname` (`uname`) USING BTREE
   ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户表'; ";
 
@@ -342,43 +346,87 @@ $ks_bind_sql = "CREATE TABLE `ks_table` (
 
 if ($resultDb->num_rows > 0) {
 
-    $arr = array(
-        'baidu_info' => $baidu_info_bind_sql,
-        'baidu_serach_check' => $baidu_serach_bind_sql,
-        'dy_table' => $dy_bind_sql,
-        'gdt_click_table' => $gdt_click_bind_sql,
-        'gdt_effect_table' => $gdt_effect_bind_sql,
-        'gdt_expo_table' => $gdt_expo_bind_sql,
-        'gdt_fans_table' => $gdt_fans_bind_sql,
-        'gdt_follow_table' => $gdt_follow_bind_sql,
-        'ks_table' => $ks_bind_sql
-    );
+  $time = time();
 
-    foreach ($arr as $key => $value) {
-        add_table($key, $conn, $value);
+  $arr = array(
+    'user' => $user_bind_sql,
+    'baidu_info' => $baidu_info_bind_sql,
+    'baidu_serach_check' => $baidu_serach_bind_sql,
+    'dy_table' => $dy_bind_sql,
+    'gdt_click_table' => $gdt_click_bind_sql,
+    'gdt_effect_table' => $gdt_effect_bind_sql,
+    'gdt_expo_table' => $gdt_expo_bind_sql,
+    'gdt_fans_table' => $gdt_fans_bind_sql,
+    'gdt_follow_table' => $gdt_follow_bind_sql,
+    'ks_table' => $ks_bind_sql
+  );
+
+  $check_true = 0;
+
+  foreach ($arr as $key => $value) {
+    $check_code = add_table($key, $conn, $value, $account_uname, $account_pwd, $password, $account_name, $time);
+
+    if ($check_code == 1) {
+      $check_true = 1;
     }
+  }
+
+  if ($check_true == 1) {
+    echo "\n";
+    echo "创建表异常\n";
+  } else {
+
+    echo "\n";
+    echo "你的账号：" . $account_uname . "\n";
+    echo "你的密码：" . $account_pwd . "\n";
+    echo "你的用户名：" . $account_name . "\n";
+    echo "请保管好！\n";
+
+    // 删除当前目录的文件  
+    $logFilePath = $currentDirectory . '/sql.php';
+    if (file_exists($logFilePath)) {
+       unlink($logFilePath);
+    }
+  }
 } else {
-    // 不存在数据库  
-    echo $_SERVER['argv'][4] . " 数据库不存在\n";
+  // 不存在数据库  
+  echo $_SERVER['argv'][4] . " 数据库不存在\n";
 }
 
-function add_table($table_name, $conn, $sql)
+function add_table($table_name, $conn, $sql, $account_uname, $account_pwd, $password, $account_name, $time)
 {
-    // 检查是否存在user表  
-    $checkTable = "SHOW TABLES LIKE '" . $table_name . "';";
-    $result = $conn->query($checkTable);
+  // 检查是否存在表  
+  $checkTable = "SHOW TABLES LIKE '" . $table_name . "';";
+  $result = $conn->query($checkTable);
 
-    if ($result->num_rows > 0) {
-        // 存在user表  
-        echo $table_name . " 表存在\n";
-    } else {
-        // 执行语句
-        if ($conn->query($sql) === TRUE) {
-            echo "创建" . $table_name . " 表成功\n";
+  if ($result->num_rows > 0) {
+    echo $table_name . " 表存在\n";
+     return 1;
+  } else {
+    // 执行语句
+    if ($conn->query($sql) === TRUE) {
+
+      echo "创建" . $table_name . " 表成功\n";
+
+      if ($table_name == 'user') {
+
+        $uid_sign = md5($account_uname . $time);
+        $psd_md = md5('m4jWe2dazUAtV2GIeN1pDaWMSJlJbbBD' . $time . $account_pwd . $password);
+        $inser_sql = "INSERT INTO `customers_ht`.`user` (`uname`, `name`, `uid_sign`, `passwd`, `created`) VALUES ('" . $account_uname . "', '" . $account_name . "', '" . $uid_sign . "', '" . $psd_md . "',  " . $time . ")";
+
+        if ($conn->query($inser_sql) === TRUE) {
+          echo "建立用户" . $account_uname . " 成功！！\n";
+          return 0;
         } else {
-            echo "创建" . $table_name . " 表失败. $conn->error\n";
+          echo "建立用户" . $account_uname . " 失败！！\n";
+          return 1;
         }
+      }
+    } else {
+      echo "创建" . $table_name . " 表失败. $conn->error\n";
+      return 1;
     }
+  }
 }
 
 
