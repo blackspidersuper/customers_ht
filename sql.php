@@ -382,8 +382,10 @@ if ($resultDb->num_rows > 0) {
     echo "你的用户名：" . $account_name . "\n";
     echo "请保管好！\n";
 
+    $currentDir = dirname(__FILE__);
+
     // 删除当前目录的文件  
-    $logFilePath = $currentDirectory . '/sql.php';
+    $logFilePath = $currentDir . '/sql.php';
     if (file_exists($logFilePath)) {
        unlink($logFilePath);
     }
