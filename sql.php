@@ -364,7 +364,7 @@ if ($resultDb->num_rows > 0) {
   $check_true = 0;
 
   foreach ($arr as $key => $value) {
-    $check_code = add_table($key, $conn, $value, $account_uname, $account_pwd, $password, $account_name, $time);
+    $check_code = add_table($key, $conn, $value, $account_uname, $account_pwd, $password, $account_name, $time,$dbname);
 
     if ($check_code == 1) {
       $check_true = 1;
@@ -393,7 +393,7 @@ if ($resultDb->num_rows > 0) {
   echo $_SERVER['argv'][4] . " 数据库不存在\n";
 }
 
-function add_table($table_name, $conn, $sql, $account_uname, $account_pwd, $password, $account_name, $time)
+function add_table($table_name, $conn, $sql, $account_uname, $account_pwd, $password, $account_name, $time,$dbname)
 {
   // 检查是否存在表  
   $checkTable = "SHOW TABLES LIKE '" . $table_name . "';";
@@ -412,13 +412,14 @@ function add_table($table_name, $conn, $sql, $account_uname, $account_pwd, $pass
 
         $uid_sign = md5($account_uname . $time);
         $psd_md = md5('m4jWe2dazUAtV2GIeN1pDaWMSJlJbbBD' . $time . $account_pwd . $password);
-        $inser_sql = "INSERT INTO `customers_ht`.`user` (`uname`, `name`, `uid_sign`, `passwd`, `created`) VALUES ('" . $account_uname . "', '" . $account_name . "', '" . $uid_sign . "', '" . $psd_md . "',  " . $time . ")";
+        $inser_sql = "INSERT INTO `".$dbname."`.`user` (`uname`, `name`, `uid_sign`, `passwd`, `created`) VALUES ('" . $account_uname . "', '" . $account_name . "', '" . $uid_sign . "', '" . $psd_md . "',  " . $time . ")";
 
         if ($conn->query($inser_sql) === TRUE) {
           echo "建立用户" . $account_uname . " 成功！！\n";
           return 0;
         } else {
           echo "建立用户" . $account_uname . " 失败！！\n";
+  
           return 1;
         }
       }
