@@ -8,7 +8,7 @@ use think\Db;
 
 class DisplayModel extends Model
 {
-    public $list_name_array = array(array('name' => '百度-大搜', 'table_name' => 'baidu_serach_check'), array('name' => '百度-信息流', 'table_name' => 'baidu_info'), array('name' => '抖音', 'table_name' => 'dy_table'), array('name' => '快手', 'table_name' => 'ks_table')); //定义一个数组，用于去循环下面三个表
+    public $list_name_array = array(array('name' => '百度-大搜', 'table_name' => 'baidu_serach_check'), array('name' => '百度-信息流', 'table_name' => 'baidu_info'), array('name' => '抖音-有效触点', 'table_name' => 'dy_table', 'bh' => 1), array('name' => '抖音-视频播放', 'table_name' => 'dy_table', 'bh' => 2), array('name' => '抖音-视频播完', 'table_name' => 'dy_table', 'bh' => 3), array('name' => '抖音-视频有效播放', 'table_name' => 'dy_table', 'bh' => 4), array('name' => '快手', 'table_name' => 'ks_table')); //定义一个数组，用于去循环下面三个表
 
     /**
      * 数据展示
@@ -27,15 +27,28 @@ class DisplayModel extends Model
             $temporary_other_arr = array('name' => $value['name'], 'data' => array());
             $temporary_pie_arr = array();
 
-            // 这种是其他图表的查询
-            $sql = "SELECT count(`id`) AS `num`,FROM_UNIXTIME(`add_time`,'%Y-%m-%d') AS `add_time` FROM `" . $value['table_name'] . "` ";
-            $where = "WHERE `only_id` = '" . $uid . "'  GROUP BY FROM_UNIXTIME(`add_time`,'%Y-%m-%d') ";
-            $all_res =  Db::query($sql . $where);
+            if ($value['table_name'] == 'dy_table') {
+                 // 这种是其他图表的查询
+                 $sql = "SELECT count(`id`) AS `num`,FROM_UNIXTIME(`add_time`,'%Y-%m-%d') AS `add_time` FROM `" . $value['table_name'] . "` ";
+                 $where = "WHERE `bh`='".$value['bh']."' AND `only_id` = '" . $uid . "'  GROUP BY FROM_UNIXTIME(`add_time`,'%Y-%m-%d') ";
+                 $all_res =  Db::query($sql . $where);
+ 
+                 // 由于饼状图返回不一样
+                 $pie_sql = "SELECT count(`id`) AS `num`, '" . $value['name'] . "' AS `name` FROM `" . $value['table_name'] . "`";
+                 $pie_where = "WHERE `bh`='".$value['bh']."' AND  `only_id` = '" . $uid . "'";
+                 $pie_res = Db::query($pie_sql . $pie_where);
+            } else {
+                // 这种是其他图表的查询
+                $sql = "SELECT count(`id`) AS `num`,FROM_UNIXTIME(`add_time`,'%Y-%m-%d') AS `add_time` FROM `" . $value['table_name'] . "` ";
+                $where = "WHERE `only_id` = '" . $uid . "'  GROUP BY FROM_UNIXTIME(`add_time`,'%Y-%m-%d') ";
+                $all_res =  Db::query($sql . $where);
 
-            // 由于饼状图返回不一样
-            $pie_sql = "SELECT count(`id`) AS `num`, '" . $value['name'] . "' AS `name` FROM `" . $value['table_name'] . "`";
-            $pie_where = "WHERE `only_id` = '" . $uid . "'";
-            $pie_res = Db::query($pie_sql . $pie_where);
+                // 由于饼状图返回不一样
+                $pie_sql = "SELECT count(`id`) AS `num`, '" . $value['name'] . "' AS `name` FROM `" . $value['table_name'] . "`";
+                $pie_where = "WHERE `only_id` = '" . $uid . "'";
+                $pie_res = Db::query($pie_sql . $pie_where);
+            }
+
 
             //整理饼图的结构
             $temporary_pie_arr[] = $pie_res[0]['name'];
@@ -85,7 +98,7 @@ class DisplayModel extends Model
         }
 
         //查出用户的信息,防止跨级查询
-        $sql = "SELECT `uid_sign` FROM `user` WHERE `id`='" . $uid."'";
+        $sql = "SELECT `uid_sign` FROM `user` WHERE `id`='" . $uid . "'";
         $userinfo = Db::query($sql);
 
         if (empty($userinfo)) {
