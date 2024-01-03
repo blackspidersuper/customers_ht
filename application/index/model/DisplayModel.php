@@ -92,9 +92,14 @@ class DisplayModel extends Model
         $s_time = strtotime(date('Y-m-d', $s_time) . ' 00:00:00');
         $e_time = strtotime(date('Y-m-d', $e_time) . ' 23:59:59');
 
+
         //默认重复次数为10 
         if (empty($reply_num)) {
-            $reply_num = 10;
+            if($reply_num==0){
+                $reply_num=0;
+            }else{
+                $reply_num = 10;
+            }
         }
 
         //查出用户的信息,防止跨级查询

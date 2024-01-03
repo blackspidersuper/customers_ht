@@ -23,7 +23,10 @@ Route::get('/logout','Admin/logout'); //退出登录
 Route::get('/user_info', 'Index/user_info'); //用户信息
 
 
-Route::get('/display/show_display_page','Display/show_display_page'); //数据展示界面
+Route::get('/display/show_display_page','Display/show_display_page'); //图界面
+
+Route::get('/display/data_display_page','Display/data_display_page'); //数据界面
+
 Route::get('/display/show_list_display','Display/show_list_display'); //数据展示数据
 Route::post('/display/down_list','Display/down_list'); //下载数据数据
 

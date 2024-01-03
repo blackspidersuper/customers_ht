@@ -90,8 +90,14 @@ class IndexModel extends Model
                         "icon" => "fa fa-area-chart",
                         "child" => array(
                             array(
-                                "title" => "数据展示",
+                                "title" => "图展示",
                                 "href" => "/display/show_display_page",
+                                "icon" => "fa fa-line-chart",
+                                "target" => "_self",
+                            ),
+                            array(
+                                "title" => "数据展示",
+                                "href" => "/display/data_display_page",
                                 "icon" => "fa fa-line-chart",
                                 "target" => "_self",
                             )

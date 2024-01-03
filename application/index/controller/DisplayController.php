@@ -9,7 +9,7 @@ use think\facade\Request;
 
 class DisplayController extends Controller
 {
-    //数据展示页面
+    //图展示页面
     public function show_display_page()
     {
         return $this->fetch('display/display');
@@ -23,6 +23,12 @@ class DisplayController extends Controller
         $mod = new DisplayModel();
         $res = $mod->show_list_display($uid);
         return json($res);
+    }
+
+    //数据展示页面
+    public function data_display_page()
+    {
+        return $this->fetch('display/display_data');
     }
 
     //下载
