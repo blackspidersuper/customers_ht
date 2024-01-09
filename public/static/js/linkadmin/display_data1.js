@@ -20,7 +20,6 @@ layui.config({
     laydate.render({
         elem: '#query_time'
         , range: ['#my-startDate', '#my-endDate']
-        , min: minDate()
         , max: maxDate()
         , type: 'datetime'
     });
