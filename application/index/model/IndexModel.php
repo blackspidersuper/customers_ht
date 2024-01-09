@@ -100,6 +100,12 @@ class IndexModel extends Model
                                 "href" => "/display/data_display_page",
                                 "icon" => "fa fa-line-chart",
                                 "target" => "_self",
+                            ),
+                            array(
+                                "title" => "数据展示1",
+                                "href" => "/display/data_display_page1",
+                                "icon" => "fa fa-line-chart",
+                                "target" => "_self",
                             )
                         )
                     ),

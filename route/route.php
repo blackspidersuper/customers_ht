@@ -27,8 +27,13 @@ Route::get('/display/show_display_page','Display/show_display_page'); //图界�
 
 Route::get('/display/data_display_page','Display/data_display_page'); //数据界面
 
+Route::get('/display/data_display_page1','Display/data_display_page1'); //数据界面
+
+
 Route::get('/display/show_list_display','Display/show_list_display'); //数据展示数据
 Route::post('/display/down_list','Display/down_list'); //下载数据数据
+
+Route::get('/display/down_list1','Display/down_list1'); //下载数据数据
 
 Route::rule('/douyin_table_all','Monitor/douyin_table','GET|POST'); //抖音获取监测链接信息，插入到数据库
 Route::rule('/baidu_table_check', 'Monitor/baidu_table_check','GET|POST'); //百度-大搜基木鱼，获取监测链接信息，插入到数据库

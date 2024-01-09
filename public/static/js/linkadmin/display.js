@@ -74,7 +74,7 @@ layui.config({
             let title_name = $('#platform option:selected')[0].innerText;//获取标题名称
             var outData = layui.excel.filterExportData(response.data.data, ['imei']);
             outData.unshift({ imei: title_name + 'imei' })
-            layui.excel.exportExcel(outData, title_name + 'im导出.csv', 'csv');
+            layui.excel.exportExcel(outData, title_name + 'im导出.txt', 'txt');
         });
         return false;
     });
@@ -105,7 +105,7 @@ layui.config({
             let title_name = $('#platform option:selected')[0].innerText;//获取标题名称
             var outData = layui.excel.filterExportData(response.data.data, ['oaid']);
             outData.unshift({ oaid: title_name + 'oaid' })
-            layui.excel.exportExcel(outData, title_name + 'oa导出.csv', 'csv');
+            layui.excel.exportExcel(outData, title_name + 'oa导出.txt', 'txt');
         });
         return false;
     });
@@ -136,7 +136,7 @@ layui.config({
             let title_name = $('#platform option:selected')[0].innerText;//获取标题名称
             var outData = layui.excel.filterExportData(response.data.data, ['idfa']);
             outData.unshift({ idfa: title_name + 'idfa' })
-            layui.excel.exportExcel(outData, title_name + 'id导出.csv', 'csv');
+            layui.excel.exportExcel(outData, title_name + 'id导出.txt', 'txt');
         });
         return false;
     });
