@@ -91,9 +91,14 @@ layui.config({
         let now_time = layui.util.toDateString(new Date().getTime(), 'yyyy-MM-dd HH:mm:ss');
 
         let title_name = $('#platform option:selected')[0].innerText;//获取标题名称
-        var outData = layui.excel.filterExportData(down_data, ['name',down_event,'add_time']);
-        outData.unshift({name: '类型',add_time: '添加时间',down_event: title_name +'_' +down_event })
-        layui.excel.exportExcel(outData, title_name + '_' + down_event + '_导出-' + now_time + '.csv', 'csv');
+
+        // var outData = layui.excel.filterExportData(down_data, ['name',down_event,'add_time']);
+        // outData.unshift({name: '类型',add_time: '添加时间',down_event: title_name +'_' +down_event })
+
+        var outData = layui.excel.filterExportData(down_data, [down_event]);
+        // outData.unshift({down_event: title_name +'_' +down_event })
+
+        layui.excel.exportExcel(outData, title_name + '_' + down_event + '_导出-' + now_time + '.txt', 'txt');
 
 
     });
