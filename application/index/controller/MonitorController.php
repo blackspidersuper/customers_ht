@@ -18,6 +18,7 @@ class MonitorController extends Controller
             'only_id' => Request::param('id', ''), //用户唯一标记
             'media_sign' => '抖音', //来源
             'user_name' => Request::param('user_name', ''), //用户名
+            'mac' => Request::param('mac', ''), //移动设备mac地址
             'imei' => Request::param('I', ''), //imei
             'os' => Request::param('OS', ''), //os
             'model' => Request::param('MODEL', ''), //model
