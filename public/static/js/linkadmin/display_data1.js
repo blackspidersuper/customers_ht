@@ -32,6 +32,7 @@ layui.config({
             { field: 'im', title: '点数1', align: 'center', templet: '#im' },
             { field: 'oa', title: '点数2', align: 'center', templet: '#oa' },
             { field: 'id', title: '点数3', align: 'center', templet: '#id' },
+            { field: 'mac', title: '点数4', align: 'center', templet: '#mac' },
         ]],
         data: []
 

@@ -204,7 +204,8 @@ class DisplayModel extends Model
         $key_arr = array(
             'idfa' => 'idfa',
             'imei' => 'imei',
-            'oaid' => 'oaid'
+            'oaid' => 'oaid',
+            'mac' => 'mac'
         );
 
         $main_key = $key_arr[$key];

@@ -141,6 +141,38 @@ layui.config({
         return false;
     });
 
+    //点击提交
+    form.on('submit(mac_get)', function (data) {
+
+        if (data.field.platform == "") {
+            layer.msg("请选择添加的平台");
+            return false;
+        }
+        axios({
+            method: 'post', url: '/display/down_list',
+            params: {
+                type_pallet: data.field.platform,
+                key: 'mac',
+                start_time: data.field.start_time,
+                end_time: data.field.end_time,
+                reply_num: data.field.reply_num,
+                uid_id: data.field.xm_client,
+            }
+        }).then(function (response) {
+
+            if (response.data.code == 1) {
+                layer.msg(response.data.msg);
+                return false;
+            }
+            let title_name = $('#platform option:selected')[0].innerText;//获取标题名称
+            var outData = layui.excel.filterExportData(response.data.data, ['mac']);
+            outData.unshift({ mac: title_name + 'mac' })
+            layui.excel.exportExcel(outData, title_name + 'mac导出.txt', 'txt');
+        });
+        return false;
+    });
+
+
 
     var chart;
 
@@ -163,7 +195,7 @@ layui.config({
     });
 
 
-   var chart;
+    var chart;
 
     //点击提交
     form.on('submit(echart_add)', function (data) {

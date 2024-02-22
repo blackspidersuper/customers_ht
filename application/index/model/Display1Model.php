@@ -262,6 +262,7 @@ class Display1Model extends Model
         $im_arr = array('num' => '', 'data' => '');
         $id_arr = array('num' => '', 'data' => '');
         $oa_arr = array('num' => '', 'data' => '');
+        $mac_arr=array('num' => '', 'data' => '');
 
         $where = empty($key) ? "" : " AND `bh` IN(" . $key . ") ";
         $where .= "AND `add_time` BETWEEN '" . $s_time . "' AND '" . $e_time . "' ORDER BY `add_time`";
@@ -287,16 +288,22 @@ class Display1Model extends Model
 
         $oa_arr['num'] = count($res3); //oa数量
         $oa_arr['data'] = $res3;
+        
+        //mac
+        $sql4 = "SELECT `bh`,`bh_name` AS `name`,`mac` AS `mac`,FROM_UNIXTIME(`add_time`,'%Y-%m-%d') AS `add_time` FROM `dy_table` WHERE 1 AND `mac` <> '' AND `mac` <> '__mac__' ";
+        $res4 = Db::query($sql4 . $where);
 
-
-        if (empty($res1) && empty($res2) && empty($res3)) {
+        $mac_arr['num'] = count($res4); //mac数量
+        $mac_arr['data'] = $res4;
+        
+        if (empty($res1) && empty($res2) && empty($res3)&& empty($res4)) {
             return array('code' => 1, 'msg' => '没有信息可供下载');
         }
 
      
         return [
             'code' => 0,
-            'data' => array(['oa' => $oa_arr['num'],'id' => $id_arr['num'],'im' => $im_arr['num'],'im_data' => $im_arr['data'], 'oa_data' => $oa_arr['data'], 'id_data' => $id_arr['data']]),
+            'data' => array(['oa' => $oa_arr['num'],'id' => $id_arr['num'],'im' => $im_arr['num'],'mac' => $mac_arr['num'],'im_data' => $im_arr['data'], 'oa_data' => $oa_arr['data'], 'id_data' => $id_arr['data'],'mac_data'=>$mac_arr['data']]),
             'msg' => '下载成功'
         ];
     }
